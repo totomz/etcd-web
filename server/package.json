@@ -1,0 +1,29 @@
+{
+  "name": "etcd-web",
+  "version": "1.0.0",
+  "description": "A very simple web UI for ETCD v3",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha run test/unit/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totomz/etcd-web.git"
+  },
+  "keywords": [
+    "etcd"
+  ],
+  "author": "Tommaso Doninelli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/totomz/etcd-web/issues"
+  },
+  "homepage": "https://github.com/totomz/etcd-web#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "etcd3": "^0.2.13",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1"
+  }
+}
