@@ -2,7 +2,7 @@
 set -e
 
 if [[ "$1" = 'start' ]]; then
-    exec /docker-entrypoint.sh
+    exec node /opt/etcd-web/server/index.js
 else
     exec "$@"
 fi

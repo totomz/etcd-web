@@ -38,12 +38,8 @@ export class KeyNavigatorComponent implements OnInit {
     }
   }
 
-  selectKey(key: any): string {
-    console.log(key);
+  selectKey(key: any) {
     this.etcd.getValue(key).subscribe(o => {
-      console.log("dio");
-      console.log(o);
-      console.log("dio");
 
       if(typeof o === 'object') {
         o = JSON.stringify(o, null, 4);
@@ -54,9 +50,6 @@ export class KeyNavigatorComponent implements OnInit {
       };
     });
 
-
-
-    return "culo";
   }
 
 }

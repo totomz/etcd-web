@@ -8,4 +8,16 @@ A simple, minimal, ugly, with 0 features web interface for ETCD v3. It support c
 
 That's it. 
 
-# Run 
+# Run
+```
+docker run--rm \
+    -p 8080:8080 \
+    -e etc_user=root \
+    -e etc_pass=ERXHTYUTTHBQMSBW \
+    -e etc_srv=https://srv1:17977,https://srv2:17977 \
+    hakunacloud/etcd-web
+``` 
+
+Where the variables areL
+* `etc_user` and `etc_pass` are the credentials for etcd
+*  `etc_srv` a comma-separated list of nodes of your cluster

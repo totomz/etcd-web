@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const port = 3000;
+const port = 8080;
 
 const etcd = new Etcd3({
     auth: {
@@ -29,7 +29,7 @@ app.get('/etcd/keys', async (req, res) => {
 
 app.get('/etcd/value', async (req, res) => {
     const key = req.query.key;
-    console.log(key);
+    // console.log(key);
     if(!key) {
         return res.send('[Invalid Key]');
     }
@@ -42,3 +42,6 @@ app.use('/', express.static(path.join(__dirname, '../dashboard/dist/dashboard'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
+process.on('SIGINT', function() {
+    process.exit();
+});
