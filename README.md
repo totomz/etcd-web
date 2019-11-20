@@ -13,7 +13,7 @@ That's it.
 docker run--rm \
     -p 8080:8080 \
     -e etc_user=root \
-    -e etc_pass=ERXHTYUTTHBQMSBW \
+    -e etc_pass=XXXXXXXX \
     -e etc_srv=https://srv1:17977,https://srv2:17977 \
     hakunacloud/etcd-web
 ``` 
