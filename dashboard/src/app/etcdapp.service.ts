@@ -17,7 +17,12 @@ export class EtcdappService {
   }
 
   getValue(key: string): Observable<any> {
-    return this.http.get<string>(`${environment.apiBaseUrl}/etcd/value`, {params: {key}});
+    return this.http.get(`${environment.apiBaseUrl}/etcd/value`, {params: {key}, responseType: 'text' });
   }
+
+  putKeyValue(key: string, value: string):Observable<any> {
+    return this.http.put<string>(`${environment.apiBaseUrl}/etcd/keyvalue`, {key, value});
+  }
+
 
 }

@@ -17,6 +17,7 @@ export class KeyNavigatorComponent implements OnInit {
   displayedColumns: string[] = ['key'];
   dataSource: MatTableDataSource<string>;
   selectedValue: Value = { value: '' };
+  selectedKey: any;
 
   constructor(private etcd: EtcdappService ) {
     this.etcd = etcd;
@@ -39,10 +40,14 @@ export class KeyNavigatorComponent implements OnInit {
   }
 
   selectKey(key: any) {
+    this.selectedKey = key;
     this.etcd.getValue(key).subscribe(o => {
 
-      if(typeof o === 'object') {
-        o = JSON.stringify(o, null, 4);
+      try {
+        o = JSON.stringify(JSON.parse(o), null, 4);
+      }
+      catch (e) {
+        // not a json - not a problem
       }
 
       this.selectedValue = {
@@ -52,4 +57,25 @@ export class KeyNavigatorComponent implements OnInit {
 
   }
 
+  addKey(newKey: string) {
+    console.log(`SALVO ${newKey}`);
+    this.etcd.putKeyValue(newKey, '--').subscribe((data) => {
+      console.log(`Done? ${JSON.stringify(data)}`)
+    });
+  }
+
+  updateValue(value: string) {
+
+    try {
+      value = JSON.stringify(value);
+    }
+    catch (e) {
+      // not a json...?
+    }
+
+    console.log(`${this.selectedKey} ==> ${value}`);
+    this.etcd.putKeyValue(this.selectedKey, value).subscribe((data) => {
+      console.log(`Done? ${JSON.stringify(data)}`)
+    });
+  }
 }

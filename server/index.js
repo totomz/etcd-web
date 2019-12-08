@@ -2,11 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const { Etcd3 } = require('etcd3');
 const path = require('path');
-
+const  bodyParser = require('body-parser')
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
 const port = 8080;
 
@@ -37,6 +38,12 @@ app.get('/etcd/value', async (req, res) => {
     const val = await etcd.get(key);
     res.send(val);
 });
+
+app.put('/etcd/keyvalue', async (req, res) => {
+    console.log(`Pushing key: [${req.body.key}] => [${req.body.value}]`);
+    const boh = await etcd.put(req.body.key).value(req.body.value);
+    res.send(boh);
+})
 
 app.use('/', express.static(path.join(__dirname, '../dashboard/dist/dashboard')));
 

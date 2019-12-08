@@ -12,6 +12,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -20,16 +21,17 @@ import { HttpClientModule } from "@angular/common/http";
     KeyNavigatorComponent,
     ValueMapComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    MatTableModule,
-    MatInputModule,
-    MatFormFieldModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatTableModule,
+        MatInputModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

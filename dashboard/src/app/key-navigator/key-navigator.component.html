@@ -23,10 +23,21 @@
 
   <div class="col-12 col-lg-6">
     <mat-form-field style="width: 100%; height: 100%">
-      <textarea matInput matTextareaAutosize="true" matAutosizeMinRows="30" minRows="30" placeholder="" >{{selectedValue.value}}</textarea>
+      <form class="example-container" >
+        <textarea matInput #newValue matTextareaAutosize="true" matAutosizeMinRows="30" minRows="30" placeholder="" >{{selectedValue.value}}</textarea>
+        <button mat-button color="primary" (click)="updateValue(newValue.value)">Save</button>
+      </form>
     </mat-form-field>
   </div>
 </div>
 
 
-
+<div class="row flex-xl-nowrap">
+  <div class="col-12 col-lg-6">
+    Add a new key
+    <mat-form-field style="width: 100%">
+      <input matInput #newKey placeholder="New Key">
+    </mat-form-field>
+    <button mat-button color="primary" (click)="addKey(newKey.value)">Save</button>
+  </div>
+</div>
