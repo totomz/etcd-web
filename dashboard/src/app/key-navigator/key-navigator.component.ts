@@ -78,4 +78,10 @@ export class KeyNavigatorComponent implements OnInit {
       console.log(`Done? ${JSON.stringify(data)}`)
     });
   }
+
+  deleteKey(element: any) {
+    this.etcd.deleteKey(element).subscribe((data) => {
+      console.log(`Done? ${JSON.stringify(data)}`)
+    });
+  }
 }

@@ -12,7 +12,7 @@
 
       <ng-container matColumnDef="key">
         <th mat-header-cell *matHeaderCellDef> Key </th>
-        <td mat-cell *matCellDef="let element" >{{element}} </td>
+        <td mat-cell *matCellDef="let element" ><button mat-button color="primary" (click)="deleteKey(element)">Delete</button> {{element}}  </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

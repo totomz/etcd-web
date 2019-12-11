@@ -19,7 +19,8 @@ const etcd = new Etcd3({
     hosts: process.env.etc_srv.split(',')
 });
 
-console.log(path.join(__dirname, '../dashboard/dist/dashboard'));
+const dashpat = path.join(__dirname, '../dashboard/dist/dashboard');
+console.log(dashpat);
 
 
 app.get('/etcd/keys', async (req, res) => {
@@ -43,9 +44,18 @@ app.put('/etcd/keyvalue', async (req, res) => {
     console.log(`Pushing key: [${req.body.key}] => [${req.body.value}]`);
     const boh = await etcd.put(req.body.key).value(req.body.value);
     res.send(boh);
-})
+});
 
-app.use('/', express.static(path.join(__dirname, '../dashboard/dist/dashboard')));
+app.delete('/etcd/key', async (req, res) => {
+    console.log(`Deleting key: [${req.query.key}]`);
+    const boh = await etcd.delete().key(req.query.key).exec();
+    res.send(boh);
+});
+
+// app.get('/', (req, res) => res.end('hello'));
+
+
+app.use('/', express.static(dashpat));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 

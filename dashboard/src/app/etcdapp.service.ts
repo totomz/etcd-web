@@ -25,4 +25,7 @@ export class EtcdappService {
   }
 
 
+  deleteKey(key: any) {
+    return this.http.delete<string>(`${environment.apiBaseUrl}/etcd/key` ,{params: {key}});
+  }
 }

@@ -10,7 +10,7 @@ That's it.
 
 # Run
 ```
-docker run--rm \
+docker run --rm \
     -p 8080:8080 \
     -e etc_user=root \
     -e etc_pass=XXXXXXXX \
